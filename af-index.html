@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lançamento do Novo Site - After City Roleplay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #3498db;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .countdown {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #e74c3c;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">After City Roleplay</div>
+        <h1>🚀 Novo Site em Breve! 🚀</h1>
+        <p>Estamos animados para anunciar que nosso novo site será lançado amanhã, 16 de Outubro!</p>
+        <div class="countdown" id="countdown">
+            <span id="days">00</span>d 
+            <span id="hours">00</span>h 
+            <span id="minutes">00</span>m 
+            <span id="seconds">00</span>s
+        </div>
+        <p>Fique ligado e não perca a grande estreia!</p>
+        <a href="#" class="button">Acesse a Página de Lançamento</a>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const launchDate = new Date("October 16, 2024 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "O site foi lançado!";
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
